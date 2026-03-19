@@ -5,9 +5,9 @@
  */
 public class Gnome {
 
-    // Variáveis de instância: 
+    // Variáveis de instância:
     public String name;
-    private int age;
+    public int age;
     public Gnome gnomeBuddy;
     private boolean magical = false;
     protected double height = 2.6;
@@ -15,11 +15,11 @@ public class Gnome {
     // [final] Constante - [static] Altera um, todos sao alterados
 
     // Atributos de Instancia:
-    Gnome(String name, int ag, Gnome bud, double hgt) { // totalmente parametrizado
+    Gnome(String name, int age, Gnome buddy, double height) {
         this.name = name;
-        age = ag;
-        gnomeBuddy = bud;
-        height = hgt;
+        this.age = age;
+        this.gnomeBuddy = buddy;
+        this.height = height;
     }
 
     // Construtor default
@@ -61,8 +61,11 @@ public class Gnome {
         name = s;
     }
     
-    public static void main(String[ ] args) {
-        
-        
+    public void MostrarInfo(){
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("GnomeBuddy: " + gnomeBuddy);
+        System.out.println("Height: " + height);
+
     }
 }
