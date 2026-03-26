@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/000 - Teste/000 - Teste.iml" filepath="$PROJECT_DIR$/000 - Teste/000 - Teste.iml" />
       <module fileurl="file://$PROJECT_DIR$/001 - Contador/001 - Contador.iml" filepath="$PROJECT_DIR$/001 - Contador/001 - Contador.iml" />
       <module fileurl="file://$PROJECT_DIR$/002 - Gnome/002 - Gnome.iml" filepath="$PROJECT_DIR$/002 - Gnome/002 - Gnome.iml" />
       <module fileurl="file://$PROJECT_DIR$/Estrutura de Dados 1.iml" filepath="$PROJECT_DIR$/Estrutura de Dados 1.iml" />
