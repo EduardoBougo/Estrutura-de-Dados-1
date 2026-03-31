@@ -1,14 +1,14 @@
 public class GameEntry {
 
-    protected String name;	// nome da pessoa que obteve o escore 
-    protected int score;	// valor do escore 
+    protected String name;	// nome da pessoa que obteve o escore
+    protected int score;	// valor do escore
 
     /**
      * Construtor que cria um registro do jogo
      */
-    public GameEntry(String n, int s) {
-        name = n;
-        score = s;
+    public GameEntry(String name, int score) {
+        this.name = name;
+        this.score = score;
     }
 
     /**
@@ -32,3 +32,4 @@ public class GameEntry {
         return "(" + name + ", " + score + ")";
     }
 }
+
