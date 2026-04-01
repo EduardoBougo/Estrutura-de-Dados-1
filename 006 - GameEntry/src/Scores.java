@@ -32,22 +32,24 @@ public class Scores {
      * trecho de codigo 3.3 Tenta inserir um novo escore na coleção (se ele
      * for grande o suficiente)
      */
-    public void add(GameEntry e) {
-        int newScore = e.getScore();
-        // o novo registro e corresponde mesmo a um dos maiores escores? 
-        if (numEntries == maxEntries) { // o arranjo está cheio
-            if (newScore <= entries[numEntries - 1].getScore()) {
-                return; // nesse caso, a nova entrada, e, nao eh um dos maiores escores
+    public void add(GameEntry novoRegistro) {
+        // Caso o vetor esteja cheio - Verificar se o novoRegistro deve entrar nos maiores escores
+        if (numEntries == maxEntries) { // O vetor está cheio
+            if (novoRegistro.getScore() <= entries[numEntries - 1].getScore()) {
+                return; // nesse caso, a nova entrada, novoRegistro, nao eh um dos maiores escores
             }
-        } else {
-            // o arranjo nao esta cheio
-            numEntries++; // localiza o lugar onde o novo registro e (com escore grande) deve ficar 
         }
+        else { // O vetor não está cheio
+            numEntries++; //  Incrementa o número de entradas
+        }
+
         int i = numEntries - 1;
-        for (; (i >= 1) && (newScore > entries[i - 1].getScore()); i--) {
-            entries[i] = entries[i - 1];	// move a entrada i uma posição para direita 
+
+        for (; (i >= 1) && (novoRegistro.getScore() > entries[i - 1].getScore()); i--) {
+            entries[i] = entries[i - 1];	// Desloca o score da possição (i), uma posição para direita
         }
-        entries[i] = e;	// acrescenta o novo escore as entradas
+
+        entries[i] = novoRegistro;	// Acrescenta o novo score no vetor
     }
 
     /**
@@ -64,5 +66,22 @@ public class Scores {
         entries[numEntries - 1] = null; // anula o ultimo escore
         numEntries--;
         return temp; // retorna o objeto removido
+    }
+
+
+    /// Algoritimo de Inserção Ordenada ///
+    public void insertionSort(){
+
+        for (int i = 1; i < numEntries; i++){
+            GameEntry atual = entries[i];
+
+            int j = i - 1;
+
+            while ((j >= 0) && (entries[j].getScore() < atual.getScore())) {
+                entries[j + 1] = entries[j];
+                j--;
+            }
+            entries[j+1] = atual;
+        }
     }
 }
