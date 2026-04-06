@@ -1,32 +1,26 @@
 public class TicTacToe {
 
-    protected static final int X = 1, O = -1; // jogadores 
-    protected static final int EMPTY = 0; // celula vazia 
-    protected int board[][] = new int[3][3]; // tabuleiro 
-    protected int player; // jogador corrente
+    protected static final int X = 1, O = -1; // Jogadores
+    protected static final int EMPTY = 0; // Celula vazia
+    protected int board[][] = new int[3][3]; // Tabuleiro
+    protected int player; // Jogador corrente
 
-    /**
-     * Construtor
-     */
+    /// Método construtor ///
     public TicTacToe() {
         clearBoard();
     }
 
-    /**
-     * Limpa o tabuleiro
-     */
+    /// Limpa o tabuleiro ///
     public void clearBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                board[i][j] = EMPTY; // toda celula deve estar vazia 
+                board[i][j] = EMPTY; // Toda celula deve estar vazia
             }
         }
-        player = X; // o primeiro jogador eh ‘X’
+        player = X; // Seleciona o primeiro jogador como ‘X’
     }
 
-    /**
-     * Coloca um X ou O na posição i,j
-     */
+    /// Coloca um X ou O na posição i, j ///
     public void putMark(int i, int j) throws IllegalArgumentException {
         if ((i < 0) || (i > 2) || (j < 0) || (j > 2)) {
             throw new IllegalArgumentException("Invalid board position");
@@ -34,13 +28,12 @@ public class TicTacToe {
         if (board[i][j] != EMPTY) {
             throw new IllegalArgumentException("Board position occupied");
         }
-        board[i][j] = player;	// insere a marca do jogador corrente 
-        player = -player;	// troca os jogadores (usa o fato de que O = -X)
+        board[i][j] = player;	// Insere a marca do jogador corrente
+        player = -player;	// Troca os jogadores (usa o fato de que O = -X // -1 = -(1))
     }
 
-    /**
-     * Verifica se a configuração do tabuleiro é vencedora para algum jogador
-     */
+    /// Verifica se a configuração do tabuleiro é vencedora para algum jogador
+
     public boolean isWin(int mark) {
         return ((board[0][0] + board[0][1] + board[0][2] == mark * 3) // linha 0 
                 || (board[1][0] + board[1][1] + board[1][2] == mark * 3) // linha 1 
@@ -52,9 +45,7 @@ public class TicTacToe {
                 || (board[2][0] + board[1][1] + board[0][2] == mark * 3)); // diagonal
     }
 
-    /**
-     * Retorna o jogador vencedor ou indica um empate
-     */
+    /// Retorna o jogador vencedor ou indica um empate ///
     public int winner() {
         if (isWin(X)) {
             return (X);
@@ -65,9 +56,7 @@ public class TicTacToe {
         }
     }
 
-    /**
-     * Retorna uma string de caracteres que representa o tabuleiro corrente
-     */
+    /// Retorna uma string de caracteres que representa o tabuleiro corrente ///
     public String toString() {
         String s = "";
         for (int i = 0; i < 3; i++) {
