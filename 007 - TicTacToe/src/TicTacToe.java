@@ -63,13 +63,13 @@ public class TicTacToe {
             for (int j = 0; j < 3; j++) {
                 switch (board[i][j]) {
                     case X:
-                        s += "X";
+                        s += " X ";
                         break;
                     case O:
-                        s += "O";
+                        s += " O ";
                         break;
                     case EMPTY:
-                        s += " ";
+                        s += "   ";
                         break;
                 }
                 if (j < 2) {
@@ -77,7 +77,7 @@ public class TicTacToe {
                 }
             }
             if (i < 2) {
-                s += "\n-----\n";// limite da linha
+                s += "\n-----------\n";// limite da linha
             }
         }
         return s;
@@ -85,6 +85,23 @@ public class TicTacToe {
 
 // Testa a execução de um jogo simples 
     public static void main(String[] args) {
+
+        System.out.println("===========================");
+        System.out.println(" Vamos jogar jogo da velha ");
+        System.out.println("===========================");
+
+        int option = 0;
+
+        while () {
+            switch (option) {
+                case 0:
+                    continue;
+
+                case 1:
+
+            }
+        }
+
         TicTacToe game = new TicTacToe();
         game.putMark(1, 1); ///* Jogada de X */ 
         game.putMark(0, 2); ///* Jogada de O */ 
