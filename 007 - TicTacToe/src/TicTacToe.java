@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class TicTacToe {
 
     protected static final int X = 1, O = -1; // Jogadores
@@ -83,40 +85,63 @@ public class TicTacToe {
         return s;
     }
 
-// Testa a execução de um jogo simples 
+
     public static void main(String[] args) {
 
         System.out.println("===========================");
         System.out.println(" Vamos jogar jogo da velha ");
         System.out.println("===========================");
 
-        int option = 0;
+        TicTacToe game = new TicTacToe(); // Inicia um novo tabuleiro
 
-        while () {
+        int end = 1;
+
+        while (end != 0) {
+            System.out.println("========================================");
+            System.out.println("                Tabuleiro               ");
+            System.out.println("========================================");
+            System.out.println(game.toString());
+
+            Scanner sc = new Scanner(System.in);
+            if (end == 1) {
+                System.out.println("Jogador (X) jogando - Escolha uma posição: ");
+            }
+            else if (end == -1) {
+                System.out.println("Jogador (O) jogando - Escolha uma posição: ");
+            }
+
+            int option = 0;
+            option = sc.nextInt();
+
             switch (option) {
-                case 0:
-                    continue;
-
-                case 1:
-
+                case 1 -> game.putMark(0, 0);
+                case 2 -> game.putMark(0, 1);
+                case 3 -> game.putMark(0, 2);
+                case 4 -> game.putMark(1, 0);
+                case 5 -> game.putMark(1, 1);
+                case 6 -> game.putMark(1, 2);
+                case 7 -> game.putMark(2, 0);
+                case 8 -> game.putMark(2, 1);
+                case 9 -> game.putMark(2, 2);
+            }
+            if (game.isWin(end) == true ) {
+                System.out.println("Fim de game");
+                end = 0;
+            }
+            else {
+                end = -end;
             }
         }
-
-        TicTacToe game = new TicTacToe();
-        game.putMark(1, 1); ///* Jogada de X */ 
-        game.putMark(0, 2); ///* Jogada de O */ 
-        game.putMark(2, 2); ///* Jogada de X */ 
-        game.putMark(0, 0); ///* Jogada de O */ 
-        game.putMark(0, 1); ///* Jogada de X */ 
-        game.putMark(2, 1); ///* Jogada de O */ 
-        game.putMark(1, 2); ///* Jogada de X */ 
-        game.putMark(1, 0); ///* Jogada de O */ 
-        game.putMark(2, 0); ///* Jogada de X */ 
 
         System.out.println(game.toString());
         int winningPlayer = game.winner();
         if (winningPlayer != 0) {
-            System.out.println(winningPlayer + " wins");
+            if (winningPlayer == 1) {
+                System.out.println("(X) wins");
+            }
+            else if (winningPlayer == -1) {
+                System.out.println("(O) wins");
+            }
         } else {
             System.out.println("Tie");
         }
