@@ -1,16 +1,16 @@
 public class Node {
 
-    private String element;	// Assumimos que os elementos sao strings
+    private int element;	// Assumimos que os elementos sao strings
     private Node next;
 
     /// Cria um nodo, com um dado elemento e o endereço do próximo nodo
-    public Node(String s, Node n) {
+    public Node(int s, Node n) {
         element = s;
         next = n;
     }
 
     /// Retorna o elemento deste nodo
-    public String getElement() {
+    public int getElement() {
         return element;
     }
 
@@ -22,7 +22,7 @@ public class Node {
     /// ** Métodos modificadores: ** ///
 
     /// Define o elemento deste nodo
-    public void setElement(String newElem) {
+    public void setElement(int newElem) {
         element = newElem;
     }
 
