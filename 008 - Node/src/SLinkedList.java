@@ -34,5 +34,4 @@ public class SLinkedList {
             temp = temp.getNext();
         }
     }
-
 }

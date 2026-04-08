@@ -6,9 +6,11 @@ public class Main {
         Node v2 = new Node("v2", null);
         Node v3 = new Node("v3", null);
 
-        list.addLast(v1);
-        list.addLast(v2);
-        list.addLast(v3);
+        list.addFirst(v1);
+        list.addFirst(v2);
+        list.addFirst(v3);
+
+        list.ImprimeLista();
     }
 
 }
