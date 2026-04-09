@@ -39,6 +39,40 @@ public class SLinkedList {
         size++;
     }
 
+    public Node insertionSort(Node headOriginal) {
+        Node sortedHead = null; // A cabeça da nossa nova lista ordenada
+        Node atual = headOriginal; // O nó que estamos retirando para inserir
+
+        while (atual != null) {
+            // Importante salvar o próximo nó da lista ORIGINAL antes de mexermos no 'atual'
+            Node proximoOriginal = atual.getNext();
+
+            // CENÁRIO 1: Inserir no início (lista vazia ou o 'atual' é o novo recordista)
+            if ( (sortedHead == null) || (atual.getElement() > sortedHead.getElement())){
+                // (Vamos preencher as conexões daqui a pouco)
+            }
+            // CENÁRIO 2: Procurar a posição correta no meio ou no fim
+            else {
+                Node aux = sortedHead;
+
+                // O laço que você construiu perfeitamente!
+                while ((aux.getNext() != null) && (aux.getElement() < aux.getNext().getElement())) {
+                    aux = aux.getNext();
+                }
+
+                // O aux parou logo ANTES da posição onde o 'atual' deve entrar.
+                // Precisamos plugar o 'atual' aqui!
+
+            }
+            // Pegamos o próximo nó da lista original para continuar o trabalho
+
+
+        }
+        // Retornamos a nova lista pronta
+        return sortedHead;
+    }
+
+    /*
     public void addOrdered (Node novo) {
         // Testar se a lista esta cheia - Verificar se o novo Node deve entrar nos maiores scores
         if (size == 10) { // Tamanho Maximo
@@ -90,5 +124,5 @@ public class SLinkedList {
             entries[j+1] = atual;
         }
          */
-    }
 }
+
