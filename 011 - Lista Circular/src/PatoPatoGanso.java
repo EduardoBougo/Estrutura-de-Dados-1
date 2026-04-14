@@ -1,16 +1,9 @@
-
 import java.util.Random;
 
-/**
- * @author O Trecho de Código 3.26 apresenta o código Java que simula o jogo
- * do Pato, Pato, Ganso.
- */
-//* Simulação do Pato, Pato, Ganso usando uma lista encadeada circular */
+/// Simulação do Pato, Pato, Ganso usando uma lista encadeada circular ///
 public class PatoPatoGanso {
 
-    /**
-     * Simulação do Pato, Pato, Ganso usando uma lista encadeada circular
-     */
+    /// Simulação do Pato, Pato, Ganso usando uma lista encadeada circular ///
     public static void main(String[] args) {
         CircleList C = new CircleList();
         int N = 3;	// quantidade de iterações do jogo 

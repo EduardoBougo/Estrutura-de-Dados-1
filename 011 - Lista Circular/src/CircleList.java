@@ -1,48 +1,31 @@
-
-/**
- * @author Trecho de Código 3.25
- * Implementação Java para a lista en- cadeada circular que usa a classe
- * Nodo do Trecho de Código 3.12 e inclui um método toString
- * para produzir uma representação da lista.
- */
-/** Lista encadeada circular com nodos do tipo Node que armazenam strings */
+/// Lista encadeada circular com nodos do tipo Node que armazenam strings ///
 public class CircleList {
 
     protected Node cursor;	// o cursor corrente 
     protected int size;	// a quantidade de nodos da lista
 
-    /**
-     * Construtor que cria uma lista vazia
-     */
+    /// Construtor que cria uma lista vazia ///
     public CircleList() {
         cursor = null;
         size = 0;
     }
 
-    /**
-     * Retorna o tamanho corrente
-     */
+    /// Retorna o tamanho corrente ///
     public int size() {
         return size;
     }
 
-    /**
-     * Retorna o cursor
-     */
+    /// Retorna o cursor ///
     public Node getCursor() {
         return cursor;
     }
 
-    /**
-     * Move o cursor adiante
-     */
+    /// Move o cursor adiante ///
     public void advance() {
         cursor = cursor.getNext();
     }
 
-    /**
-     * Acrescenta um nodo depois do cursor
-     */
+    /// Acrescenta um nodo depois do cursor ///
     public void add(Node newNode) {
         if (cursor == null) {	// a lista está vazia 
             newNode.setNext(newNode);
@@ -54,9 +37,7 @@ public class CircleList {
         size++;
     }
 
-    /**
-     * Remove o nodo que segue o cursor
-     */
+    /// Remove o nodo que segue o cursor ///
     public Node remove() {
         Node oldNode = cursor.getNext(); // o nodo sendo removido 
         if (oldNode == cursor) {
@@ -69,9 +50,7 @@ public class CircleList {
         return oldNode;
     }
 
-    /**
-     * Retorna uma representação string da lista, iniciando pelo cursor
-     */
+    /// Retorna uma representação string da lista, iniciando pelo cursor ///
     public String toString() {
         if (cursor == null) {
             return "[ ]";
