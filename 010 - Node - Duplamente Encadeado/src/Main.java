@@ -9,16 +9,17 @@ public class Main {
         DNode node_4 = new DNode("JKL", null, null);
         DNode node_5 = new DNode("MNO", null, null);
 
-        listadupla.addLast(node_1);
-        listadupla.addLast(node_2);
-        listadupla.addLast(node_3);
-        listadupla.addLast(node_4);
         listadupla.addLast(node_5);
+        listadupla.addLast(node_4);
+        listadupla.addLast(node_3);
+        listadupla.addLast(node_2);
+        listadupla.addLast(node_1);
 
         System.out.println(listadupla.toString());
 
 
-        listadupla.remove("def");
+        // listadupla.remove("def");
+        listadupla.insertionSort(listadupla);
         System.out.println(listadupla.toString());
 
     }

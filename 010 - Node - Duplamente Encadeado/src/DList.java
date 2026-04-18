@@ -85,6 +85,9 @@ public class DList {
         addBefore(tail, new_Node);
     }
 
+    /// Insere o nodo fornecido de forma ordenada ///
+
+
     /// Remove um dado nodo v da lista. Gera um erro se v é o cabeçalho ou o final ///
     public void remove(DNode referencia) {
         DNode prev = getPrev(referencia); // Deve lançar uma IllegalArgumentException
@@ -107,6 +110,37 @@ public class DList {
         remove(temp);
     }
 
+    public void insertionSort(DList list) {
+        // Lista vazia ou com 1 elemento - Já está ordenada
+        if (list.size() <= 1) {
+            return;
+        }
+
+        DNode nodoAtual = list.getFirst().getNext(); // Começa direto do segundo nodo
+
+        while (nodoAtual != list.tail) { // Usar tail, pois a lista termina em tail, e não em null
+
+            DNode next_Nodo = nodoAtual.getNext(); // Guarda o próximo
+            DNode scanner = nodoAtual.getPrev(); // Guarda o anterio para comparar
+
+            // Remove o nodo atual para reinserir na posição correta
+            list.remove(nodoAtual);
+
+            // Anda para trás enquanto o elemento for maior (ordem crescente)
+            while (list.hasPrev(scanner) && scanner.getElement().compareTo(nodoAtual.getElement()) > 0){
+                scanner = scanner.getPrev();
+            }
+
+            // Insere na posição correta
+            if (list.hasPrev(scanner)) {
+                list.addFirst(nodoAtual);
+            }
+            else {
+                list.addAfter(scanner, nodoAtual);
+            }
+            nodoAtual = next_Nodo;
+        }
+    }
 
 
     /// Indica se o nodo indicado possui um antecessor ///
