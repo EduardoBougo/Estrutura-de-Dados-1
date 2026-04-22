@@ -153,6 +153,29 @@ public class DList {
         return v != tail;
     }
 
+    /// Concatena duas listas duplamente ligadas uma após a outra ///
+
+    public void linkLists(DList list_1,  DList list_2) {
+
+        // Faz o cursor apontar para o primeiro elemento da primeira lista
+        DNode cursor = list_1.getFirst();
+
+        // Percorre a lista_1 copiando os valores e adicionando-os em novos Nodes na nova lista
+        while(cursor != list_1.tail) {
+            this.addLast(new DNode (cursor.getElement(), null, null));
+            cursor = cursor.getNext();
+        }
+
+        // Faz o cursor apontar para o primeiro elemento da primeira lista
+        cursor = list_2.getFirst();
+
+        // Percorre a lista_2 copiando os valores e adicionando-os em novos Nodes na nova lista
+        while(cursor != list_2.tail) {
+            this.addLast(new DNode (cursor.getElement(), null, null));
+            cursor = cursor.getNext();
+        }
+    }
+
     /// Retorna uma representação string da lista ///
     public String toString() {
         String s = "[";
