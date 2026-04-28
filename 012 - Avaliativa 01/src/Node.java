@@ -1,19 +1,19 @@
 /// Nodo de uma lista duplamente encadeada de Contatos ///
 public class Node {
 
-    protected String element; // String armazenada pelo nodo
+    // Atributos
+    protected Contato element; // String armazenada pelo nodo
     protected Node next, prev; // Ponteiros para o nodo seguinte e o anterior
 
-    /// Construtor que cria um nodo com os campos fornecidos ///
-
-    public Node(String element, Node prev, Node next) {
+    // Função Construtor
+    public Node(Contato element, Node prev, Node next) {
         this.element = element;
         this.prev = prev;
         this.next = next;
     }
 
     /// Retorna o elemento deste nodo ///
-    public String getElement() {
+    public Contato getElement() {
         return element;
     }
 
@@ -28,7 +28,7 @@ public class Node {
     }
 
     /// Atribui o elemento deste nodo ///
-    public void setElement(String newElem) {
+    public void setElement(Contato newElem) {
         element = newElem;
     }
 

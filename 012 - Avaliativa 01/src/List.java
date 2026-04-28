@@ -1,10 +1,11 @@
-/// Lista duplamente encadeada com nodos do tipo Node que armazenam strings ///
+/// Lista duplamente encadeada com nodos do tipo Node que armazenam Contatos ///
 public class List {
 
-    protected int size; // quantidade de elementos
-    protected Node header, tail; //apontadores para o inicio e fim da lista
+    //Atributos
+    protected int size; // Quantidade de elementos
+    protected Node header, tail; //Ponteiros sentinelas para o inicio e fim da lista
 
-    /// Construtor que cria uma lista vazia ///
+    // Função Construtor
     public List() {
         size = 0;
         header = new Node(null, null, null); // cria o cabecalho
@@ -85,7 +86,12 @@ public class List {
         addBefore(tail, new_Node);
     }
 
-    /// Insere o nodo fornecido de forma ordenada ///
+    /// Insere o nodo fornecido de forma ordenada por Nome ///
+
+    /// Ordenar pelo Nome ///
+    /// Ordenar pela Idade ///
+    /// Consultar pelo Nome ///
+    /// Excluir pelo CPF ///
 
 
     /// Remove um dado nodo v da lista. Gera um erro se v é o cabeçalho ou o final ///
@@ -101,16 +107,16 @@ public class List {
         size--;
     }
 
-    public void remove (String node){
+    /* public void remove (String node){
         Node temp = header;
 
         while(!(node.equalsIgnoreCase(temp.getElement()))){
             temp = temp.getNext();
         }
         remove(temp);
-    }
+    }*/
 
-    public void insertionSort(List list) {
+    /*public void insertionSort(List list) {
         // Lista vazia ou com 1 elemento - Já está ordenada
         if (list.size() <= 1) {
             return;
@@ -140,7 +146,7 @@ public class List {
             }
             nodoAtual = next_Nodo;
         }
-    }
+    }*/
 
 
     /// Indica se o nodo indicado possui um antecessor ///
@@ -176,18 +182,61 @@ public class List {
         }
     }
 
-    /// Retorna uma representação string da lista ///
-    public String toString() {
-        String s = "[";
+    /// **************************************************************************** ///
+    ///                               Imprimir Lista                                 ///
+    /// **************************************************************************** ///
+
+    /// Retorna uma representação string da lista (Cabeça -> Cauda) ///
+    public String toString_Header() {
+        String list = "[";
         Node v = header.getNext();
         while (v != tail) {
-            s += v.getElement();
+            // Informações do Contato
+            list += "[";
+            list += v.getElement().getNome();
+            list += ", ";
+            list += v.getElement().getIdade();
+            list += ", ";
+            list += v.getElement().getCPF();
+            list += ", ";
+            list += v.getElement().getTelefone();
+            list += ", ";
+            list += v.getElement().getEmail();
+            list += "]";
+
             v = v.getNext();
             if (v != tail) {
-                s += ",";
+                list += ", ";
             }
         }
-        s += "]";
-        return s;
+        list += "]";
+        return list;
+    }
+
+    /// Retorna uma representação string da lista (Cauda -> Cabeça) ///
+    public String toString_Tail() {
+        String list = "[";
+        Node v = tail.getPrev();
+        while (v != header) {
+            // Informações do Contato
+            list += "[";
+            list += v.getElement().getNome();
+            list += ", ";
+            list += v.getElement().getIdade();
+            list += ", ";
+            list += v.getElement().getCPF();
+            list += ", ";
+            list += v.getElement().getTelefone();
+            list += ", ";
+            list += v.getElement().getEmail();
+            list += "]";
+
+            v = v.getPrev();
+            if (v != header) {
+                list += ", ";
+            }
+        }
+        list += "]";
+        return list;
     }
 }
