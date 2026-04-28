@@ -50,6 +50,28 @@ public class CircleList {
         return oldNode;
     }
 
+    /// Conta a quantidade de elementos numa lista circular ///
+    public int countNodes() {
+        int count = 0;
+
+        // Lista vazia
+        if (cursor == null) {
+            return 0;
+        }
+
+        Node temp = cursor.getNext();
+
+        while (temp != cursor) {
+            temp = temp.getNext();
+            count++;
+        }
+
+        count++; // Adiciona 1 para corrigir a diferença presente no while
+
+        return count;
+    }
+
+
     /// Retorna uma representação string da lista, iniciando pelo cursor ///
     public String toString() {
         if (cursor == null) {

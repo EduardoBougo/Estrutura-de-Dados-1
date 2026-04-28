@@ -1,3 +1,5 @@
+import java.net.SocketOption;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -21,7 +23,7 @@ public class Main {
         listadupla.addLast(node_2);
         listadupla.addLast(node_1);
 
-        System.out.println(listadupla.toString());
+        //System.out.println(listadupla.toString());
 
 
         // listadupla.remove("def");
@@ -34,6 +36,7 @@ public class Main {
 
         listadupla.insertionSort(listadupla);
         System.out.println(listadupla.toString());
+        System.out.println(lista_teste.toString());
 
         System.out.println("=======================================");
 
@@ -42,6 +45,7 @@ public class Main {
         listaSomada.linkLists(listadupla, lista_teste);
 
         System.out.println(listaSomada.toString());
+        System.out.println(listaSomada.size());
 
     }
 }
