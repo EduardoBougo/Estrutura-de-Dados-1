@@ -41,5 +41,14 @@ public class Contato {
         return email;
     }
 
+    /// Atualiza as informações de cadatro de um contato ///
+    public void contatoUpdate(String nome, int idade, long CPF, long telefone, String email) {
+        this.nome = nome;
+        this.idade = idade;
+        this.CPF = CPF;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
 
 }
