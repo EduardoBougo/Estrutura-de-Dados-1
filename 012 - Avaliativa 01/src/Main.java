@@ -14,12 +14,19 @@ void main() {
     Node contato_3 = new Node(c_3, null, null);
 
     // Adicionando os Contatos a lista
-    Agenda.addLast(contato_1);
-    Agenda.addLast(contato_2);
-    Agenda.addLast(contato_3);
+    Agenda.addFirst(contato_1);
+    Agenda.addFirst(contato_2);
+    Agenda.addFirst(contato_3);
 
+    //Agenda.insertionSort_Idade();
 
     System.out.println(Agenda.toString_Header());
 
-    System.out.println(Agenda.toString_Tail());
+    //System.out.println(Agenda.toString_Tail());
+
+    System.out.println(Agenda.exibirInformacao("Flavio"));
+
+    //Agenda.remove_CPF(44477788899L);
+
+    //System.out.println(Agenda.toString_Header());
 }

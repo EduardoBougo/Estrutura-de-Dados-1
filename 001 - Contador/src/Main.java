@@ -14,7 +14,6 @@ public class Main {
     }
 
     public static class GameEntry {
-
         protected String name;	// nome da pessoa que obteve o escore
         protected int score;	// valor do escore
 

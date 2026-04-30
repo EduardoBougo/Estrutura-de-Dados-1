@@ -4,12 +4,12 @@ Desenvolver uma aplicação de Lista Duplamente Encadeada que implemente uma age
 Os contatos dessa agenda devem ter pelo menos quadro campos de informação: CPF, nome, idade, fone e email.
 Essa lista deve implementar as operações:
     * Inserir no final;
-    X Inserir Ordenado pelo nome;
-    X Ordenar pelo nome;
-    X Ordenar pela idade;
+    * Inserir Ordenado pelo nome;
+    * Ordenar pelo nome;
+    * Ordenar pela idade;
     X Alterar pelo nome;
-    X Consultar pelo nome;
-    X Excluir pelo CPF;
+    * Consultar pelo nome;
+    * Excluir pelo CPF;
     * Imprimir (cabeça -> cauda);
     * Imprimir Invertido (cauda -> cabeça).
 Podem se basear nos códigos apresentados durante as aulas.

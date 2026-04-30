@@ -14,6 +14,10 @@ public class List {
         tail.setPrev(header); //
     }
 
+    /// **************************************************************************** ///
+    ///                             Funções de Controle                              ///
+    /// **************************************************************************** ///
+
     /// Retorna o número de elementos na lista ///
     public int size() {
         return size;
@@ -56,6 +60,41 @@ public class List {
         return v.getNext();
     }
 
+    /// Consultar as informações pelo Nome ///
+    protected Node consultar(String nome) {
+        Node cursor = this.getFirst();
+
+        while (cursor != tail && (cursor.getElement().getNome().compareTo(nome) != 0)){
+            cursor = cursor.getNext();
+        }
+
+        return cursor;
+    }
+
+    protected Node consultar(long CPF) {
+        Node cursor = this.getFirst();
+
+        while (cursor != tail && (cursor.getElement().getCPF() != CPF)){
+            cursor = cursor.getNext();
+        }
+
+        return cursor;
+    }
+
+    /// **************************************************************************** ///
+    ///                             Funções de Adição                                ///
+    /// **************************************************************************** ///
+
+    /// Insere o nodo fornecido no início da lista ///
+    public void addFirst(Node new_Node) {
+        addAfter(header, new_Node);
+    }
+
+    /// Insere o nodo fornecido no fim da lista ///
+    public void addLast(Node new_Node) {
+        addBefore(tail, new_Node);
+    }
+
     /// Insere um dado nodo z antes de um dado nodo v. Gera um erro se v é o cabecalho ///
     public void addBefore(Node reference_Node, Node new_Node) throws IllegalArgumentException {
         Node prev_reference = getPrev(reference_Node); // Deve lancar uma IllegalArgumentException
@@ -76,23 +115,95 @@ public class List {
         size++;
     }
 
-    /// Insere o nodo fornecido no início da lista ///
-    public void addFirst(Node new_Node) {
-        addAfter(header, new_Node);
-    }
-
-    /// Insere o nodo fornecido no fim da lista ///
-    public void addLast(Node new_Node) {
-        addBefore(tail, new_Node);
-    }
-
     /// Insere o nodo fornecido de forma ordenada por Nome ///
+    public void add_ordenado(Node new_Node) {
+        // Lista vazia - Já está ordenada
+        if (this.size == 0) {
+            this.addFirst(new_Node);
+            return;
+        }
 
-    /// Ordenar pelo Nome ///
-    /// Ordenar pela Idade ///
-    /// Consultar pelo Nome ///
-    /// Excluir pelo CPF ///
+        // Novo Node é o primeiro da lista
+        if (new_Node.getElement().getNome().compareTo(this.getFirst().getElement().getNome()) <= 0) {
+            this.addFirst(new_Node);
+            return;
+        }
 
+        Node cursor = this.getFirst();
+
+        while ((cursor.getNext() != tail) && (cursor.getNext().getElement().getNome().compareTo(new_Node.getElement().getNome())) < 0) {
+            cursor = cursor.getNext();
+        }
+
+        this.addAfter(cursor, new_Node);
+    }
+
+    /// **************************************************************************** ///
+    ///                             Funções de Ordenação                             ///
+    /// **************************************************************************** ///
+
+    /// Ordenar Lista pelo Nome (Crescente)///
+    public void insertionSort_Name() {
+        // Lista vazia ou 1 Elemento - Já está ordenada
+        if (this.size <= 1) {
+            return;
+        }
+
+        Node cursor = this.getFirst().getNext(); // Começa direto do segundo nodo
+
+        while (cursor != tail) { // Usar tail, pois a lista termina em tail, e não em null
+
+            Node next_Nodo = cursor.getNext(); // Guarda o próximo
+            Node scanner = cursor.getPrev(); // Guarda o anterio para comparar
+
+            // Remove o nodo atual para reinserir na posição correta
+            this.remove(cursor);
+
+            // Anda para trás enquanto o elemento for maior (ordem crescente)
+            while ((scanner != header) && scanner.getElement().getNome().compareTo(cursor.getElement().getNome()) > 0){
+                scanner = scanner.getPrev();
+            }
+
+            this.addAfter(scanner, cursor);
+
+            cursor = next_Nodo;
+        }
+    }
+
+    /// Ordenar Lista pela Idade (Crescente)///
+    public void insertionSort_Idade() {
+        // Lista vazia ou 1 Elemento - Já está ordenada
+        if (this.size <= 1) {
+            return;
+        }
+
+        Node cursor = this.getFirst().getNext(); // Começa direto do segundo nodo
+
+        while (cursor != tail) { // Usar tail, pois a lista termina em tail, e não em null
+
+            Node next_Nodo = cursor.getNext(); // Guarda o próximo
+            Node scanner = cursor.getPrev(); // Guarda o anterio para comparar
+
+            // Remove o nodo atual para reinserir na posição correta
+            this.remove(cursor);
+
+            // Anda para trás enquanto o elemento for maior (ordem crescente)
+            while ((scanner != header) && scanner.getElement().getIdade() > cursor.getElement().getIdade()){
+                scanner = scanner.getPrev();
+            }
+
+            this.addAfter(scanner, cursor);
+
+            cursor = next_Nodo;
+        }
+    }
+
+
+
+
+    /// **************************************************************************** ///
+    ///                            Funções de Remoção                                ///
+    /// **************************************************************************** ///
 
     /// Remove um dado nodo v da lista. Gera um erro se v é o cabeçalho ou o final ///
     public void remove(Node referencia) {
@@ -107,47 +218,17 @@ public class List {
         size--;
     }
 
-    /* public void remove (String node){
-        Node temp = header;
+    /// Excluir pelo CPF ///
+    public void remove_CPF (long CPF){
+        Node contato = consultar(CPF);
 
-        while(!(node.equalsIgnoreCase(temp.getElement()))){
-            temp = temp.getNext();
-        }
-        remove(temp);
-    }*/
+        remove(contato);
+    }
 
-    /*public void insertionSort(List list) {
-        // Lista vazia ou com 1 elemento - Já está ordenada
-        if (list.size() <= 1) {
-            return;
-        }
 
-        Node nodoAtual = list.getFirst().getNext(); // Começa direto do segundo nodo
-
-        while (nodoAtual != list.tail) { // Usar tail, pois a lista termina em tail, e não em null
-
-            Node next_Nodo = nodoAtual.getNext(); // Guarda o próximo
-            Node scanner = nodoAtual.getPrev(); // Guarda o anterio para comparar
-
-            // Remove o nodo atual para reinserir na posição correta
-            list.remove(nodoAtual);
-
-            // Anda para trás enquanto o elemento for maior (ordem crescente)
-            while (list.hasPrev(scanner) && scanner.getElement().compareTo(nodoAtual.getElement()) > 0){
-                scanner = scanner.getPrev();
-            }
-
-            // Insere na posição correta
-            if (list.hasPrev(scanner)) {
-                list.addFirst(nodoAtual);
-            }
-            else {
-                list.addAfter(scanner, nodoAtual);
-            }
-            nodoAtual = next_Nodo;
-        }
-    }*/
-
+    /// **************************************************************************** ///
+    ///                             Funções variadas                                 ///
+    /// **************************************************************************** ///
 
     /// Indica se o nodo indicado possui um antecessor ///
     public boolean hasPrev(Node v) {
@@ -237,6 +318,20 @@ public class List {
             }
         }
         list += "]";
+        return list;
+    }
+
+    public String exibirInformacao(String nome) {
+        Node contato = consultar(nome);
+
+        String name = contato.getElement().getNome();
+        int idade = contato.getElement().getIdade();
+        long cpf = contato.getElement().getCPF();
+        long telefone = contato.getElement().getTelefone();
+        String email = contato.getElement().getEmail();
+
+        String list = String.format("[%s, %d, %d, %d, %s]",name,idade,cpf,telefone,email );
+
         return list;
     }
 }
