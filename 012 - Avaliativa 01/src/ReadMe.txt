@@ -7,7 +7,7 @@ Essa lista deve implementar as operações:
     * Inserir Ordenado pelo nome;
     * Ordenar pelo nome;
     * Ordenar pela idade;
-    X Alterar pelo nome;
+    * Alterar pelo nome;
     * Consultar pelo nome;
     * Excluir pelo CPF;
     * Imprimir (cabeça -> cauda);
