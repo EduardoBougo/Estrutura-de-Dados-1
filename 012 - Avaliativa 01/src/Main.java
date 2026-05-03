@@ -126,11 +126,37 @@ public void menu(List Agenda) {
                 break;
 
             case 3:
+
+                String nome;
+                int idade;
+                long CPF;
+                long telefone;
+                String email;
+
                 cabecalho("EDITAR INFORMACÇÕES DE CONTATO");
                 System.out.println("Digite o nome do contato:");
 
                 Scanner s3 = new Scanner(System.in);
                 String nome = s3.nextLine();
+
+                Contato c = Agenda.consultar(nome).getElement();
+
+                System.out.print("Nome do contato: ");
+                nome = s.nextLine();
+
+                System.out.print("Idade do contato: ");
+                idade = s.nextInt();
+
+                System.out.print("CPF do contato: ");
+                CPF = s.nextLong();
+
+                System.out.print("Telefone do contato: ");
+                telefone = s.nextLong();
+
+                s.nextLine();
+                System.out.print("Email do contato: ");
+                email = s.nextLine();
+
 
                 break;
 
@@ -152,7 +178,9 @@ public void menu(List Agenda) {
                 enterParaContinuar();
                 break;
         }
-        menu(Agenda);
+        if (opcao != 0) {
+            menu(Agenda);
+        }
     }
 
 
@@ -179,6 +207,7 @@ public void cadastrarNovoContato(List Agenda) {
     System.out.print("Telefone do contato: ");
     telefone = s.nextLong();
 
+    s.nextLine();
     System.out.print("Email do contato: ");
     email = s.nextLine();
 
