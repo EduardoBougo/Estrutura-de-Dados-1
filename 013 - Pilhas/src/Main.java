@@ -1,13 +1,58 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+/** Dada uma expressão matemática que pode conter
+ * os símbolos de abertura ‘(‘, ‘[‘, ‘{‘ e de fechamento ‘)’, ‘]’, ‘}’ além de números e operadores.
+ * Implemente uma solução usando uma pilha genérica (tamanho dinâmico)
+ * que verifique os símbolos em uma expressão aritmética e retorne se aparecem corretamente na equação.
+ * */
+
+public class Main {
+    public static void main(String[] args) {
+
+        boolean correct = true;
+
+        // Criando uma ArrayStack (Pilha) Vazia
+        ArrayStack<Character> pilha = new ArrayStack<Character>();
+
+        System.out.println("Digite sua expressão matematica : ");
+
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+
+        char[] caracteres = input.toCharArray();
+
+        for (int i = 0; i < caracteres.length; i++) {
+            char a = caracteres[i];
+            if ((a == '(') || (a == '[') || (a == '{')) {
+                pilha.push(a);
+            } else if ((a == ')') || (a == ']') || (a == '}')) {
+                if (pilha.isEmpty()) { // Equação errada
+                    correct = false;
+                    break;
+                }
+                else {
+                    char aux = pilha.pop();
+                    if ((aux == '(' && a != ')' ||
+                         aux == '[' && a != ']' ||
+                         aux == '{' && a != '}')){ // Equação errada
+                        correct = false;
+                        break;
+                    }
+                }
+            }
+        }
+        if (!pilha.isEmpty()) {
+            correct = false;
+        }
+
+
+        if (correct) {
+            System.out.println("Equação correta!");
+        }
+        else {
+            System.out.println("Equação incorreta!");
+        }
+
+        System.out.println("Fim do codigo");
     }
 }

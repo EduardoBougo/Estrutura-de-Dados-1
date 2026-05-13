@@ -1,43 +1,34 @@
-//begin#fragment Stack
- /** 
-  * Interface for a stack: a collection of objects that are inserted
-  * and removed according to the last-in first-out principle.  This
-  * interface includes the main methods of java.util.Stack.
-  * 
-  * @author Roberto Tamassia
-  * @author Michael Goodrich
-  * @see EmptyStackException
-  */
 
-public interface Stack<E> {
- /**
-  * Return the number of elements in the stack.
-  * @return number of elements in the stack. 
-  */
-  public int size();
- /** 
-  * Return whether the stack is empty.
-  * @return true if the stack is empty, false otherwise. 
-  */
+/// Interface’ para uma pilha:
+ /// Uma coleção de objetos que são inseridos e removidos
+ /// comforme o princípio do último a entrar, primeiro a sair.
+ /// Esta interface inclui os principais métodos de java.util.Stack
+
+public interface Stack<T> {
+
+ /// Retorna o número de elementos na Pilha
+ /// @retorna o número de elementos na pilha.
+   public int size();
+
+   /// Retorne se a pilha está vazia.
+   ///@return true se a pilha estiver vazia, false caso contrário.
+
   public boolean isEmpty();
- /** 
-  * Inspect the element at the top of the stack.
-  * @return top element in the stack.  
-  * @exception EmptyStackException if the stack is empty. 
-  */
-  public E top() 
+
+  /// Inspecione o elemento na parte superior da pilha.
+  /// @retornar elemento superior na pilha.
+  /// @exception EmptyStackException se a pilha estiver vazia.
+  public T top()
     throws EmptyStackException;  
- /**
-  * Insert an element at the top of the stack.
-  * @param element to be inserted.
-  */
-  public void push (E element); 
- /** 
-  * Remove the top element from the stack.
-  * @return element removed.
-  * @exception EmptyStackException if the stack is empty.
-  */
-  public E pop()
+
+  /// Insira um elemento no topo da pilha.
+  /// @param element a ser inserido.
+  public void push (T element);
+
+  /// Remova o elemento superior da pilha.
+  /// @elemento de retorno removido.
+  /// @exception EmptyStackException se a pilha estiver vazia.
+  public T pop()
     throws EmptyStackException; 
 }
-//end#fragment Stack
+

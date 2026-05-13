@@ -1,23 +1,10 @@
-
-/**
- * Implementation of the stack ADT by means of a singly linked list.
- *
- * @author Natasha Gelfand
- * @author Roberto Tamassia
- * @see Node
- */
-//begin#fragment NodeStack
 public class NodeStack<E> implements Stack<E> {
 
-    protected NodeG<E> top;	// reference to the head node
-    protected int size;		// number of elements in the stack
-//end#fragment NodeStack
+    protected NodeG<E> top;	// Referencia o nodo Head
+    protected int size;		// Número de elementos na Pilha
 
-    /**
-     * Creates an empty stack.
-     */
-//begin#fragment NodeStack
-    public NodeStack() {	// constructs an empty stack
+    /// Função Construtura
+    public NodeStack() {	// Cria uma Pilha Vazia
         top = null;
         size = 0;
     }
@@ -55,7 +42,7 @@ public class NodeStack<E> implements Stack<E> {
         size--;
         return temp;
     }
-//end#fragment NodeStack
+
 
     /**
      * Returns a string representation of the stack as a list of elements, with
@@ -129,6 +116,5 @@ public class NodeStack<E> implements Stack<E> {
         o = o = A.top();
         status(A, "top()", o);
     }
-//begin#fragment NodeStack
 }
-//end#fragment NodeStack
+

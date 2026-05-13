@@ -1,38 +1,39 @@
-/**
- * Node of a singly linked list, which stores references to its
- * element and to the next node in the list.
- * 
- * @author Natasha Gelfand
- * @author Roberto Tamassia
- * @author Michael Goodrich
- */
-//begin#fragment Node
+
+/// Nó de uma lista simplesmente encadeada,
+/// que armazena referências do seu elemento e aponta para o próximo nó da lista.
+
 public class NodeG<E> {
-  // Instance variables:
+
+  // Atributos
   private E element;
   private NodeG<E> next;
-  /** Creates a node with null references to its element and next node. */
+
+  // Cria um nó generico com elemento e proximo nó com valor NULl
   public NodeG() {
     this(null, null);
   }
-  /** Creates a node with the given element and next node. */
+  // Cria um nó com o elemento fornecido e o próximo nó
   public NodeG(E e, NodeG<E> n) {
     element = e;
     next = n;
   }
+
   // Accessor methods:
   public E getElement() {
     return element; 
-  }
+  } // Retorna o elemento do nó
+
   public NodeG<E> getNext() { 
     return next;
-  }
+  } // Retorna o proximo nó
+
+
   // Modifier methods:
   public void setElement(E newElem) { 
     element = newElem; 
-  }
+  } // Modifica o elemento pelo fornecido
+
   public void setNext(NodeG<E> newNext) {
     next = newNext; 
-  }
+  } // Modifica o proximo nó que aponta
 }
-//end#fragment Node
