@@ -10,23 +10,24 @@ public class EscalonadorRoundRobin {
         this.quantum = quantum;
     }
 
-    // Função Principal do Algoritmo
+
     public void executarProximoTurno() {
-        // 1. Validação de segurança
+        // Fila vazia
         if (filaDeProcessos.size() == 0) {
             System.out.println("Nenhum processo na fila para ser executado.");
             return;
         }
 
-        // 2. Identificação do processo da vez
+        // Identificação do processo Atual
         Node processoAtual = filaDeProcessos.getCursor();
         System.out.println("\n>>> Executando Processo: " + processoAtual.getElement());
 
-        // 3. Aplicação das regras de negócio (Tell, Don't Ask)
+        // Execução da tarefa e consumo do tempo
+        // Métodologia (Tell, Don't Ask) Evita ficar passando parâmetros, Funcionamento por baixo dos panos
         processoAtual.registrarExecucao();
         processoAtual.consumirTempo(this.quantum);
 
-        // 4. Tomada de decisão após o uso da CPU
+        // Fim do processo ou não
         if (processoAtual.getTimeLeft() == 0) {
             System.out.println("Processo " + processoAtual.getElement() + " CONCLUÍDO com sucesso!");
 

@@ -3,7 +3,7 @@ public class CircleFIFO {
 
     protected Node cursor; // O cursor corrente
     protected Node tail; // Node sentinela apontando para o Last_In
-    protected int size;	// A quantidade de nodos da lista
+    protected int size;    // A quantidade de nodos da lista
 
     /// Construtor que cria uma lista vazia ///
     public CircleFIFO() {
@@ -23,7 +23,9 @@ public class CircleFIFO {
     }
 
     ///  Retorna o Sentinela Tail ///
-    public Node getTail() { return tail; }
+    public Node getTail() {
+        return tail;
+    }
 
     /// Move o cursor adiante ///
     public void advance() {
@@ -33,7 +35,7 @@ public class CircleFIFO {
 
     /// Acrescenta um nodo no final da lista - Depois do tail e antes do cursor ///
     public void add(Node newNode) {
-        if (cursor == null) {	// a lista está vazia 
+        if (cursor == null) {    // a lista está vazia
             newNode.setNext(newNode);
             cursor = newNode;
             tail = newNode;
@@ -46,17 +48,26 @@ public class CircleFIFO {
     }
 
     /// Remove o nodo que o cursor aponta ///
-    public Node remove() {
-        Node oldNode = cursor.getNext(); // o nodo sendo removido 
-        if (oldNode == cursor) {
-            cursor = null; // a lista se torna vazia
+    public Node removerAtual() {
+        if (cursor == null) {
+            return null;
+        }
+
+        Node nodoRemovido = cursor;
+
+        if (size == 1) {
+            cursor = null;
             tail = null;
         } else {
-            cursor.setNext(oldNode.getNext()); // desconecta o nodo antigo
-            oldNode.setNext(null);
+            tail.setNext(cursor.getNext());
+
+            cursor = cursor.getNext();
         }
+
         size--;
-        return oldNode;
+        nodoRemovido.setNext(null); // Limpa a referência do nó que saiu
+
+        return nodoRemovido;
     }
 
     /// Conta a quantidade de elementos numa lista circular ///
@@ -81,7 +92,6 @@ public class CircleFIFO {
     }
 
 
-
     /// Retorna uma representação string da lista, iniciando pelo cursor ///
     public String toString() {
         if (cursor == null) return "[ ]";
@@ -96,4 +106,5 @@ public class CircleFIFO {
         } while (temp != cursor);
 
         return s + "]";
+    }
 }

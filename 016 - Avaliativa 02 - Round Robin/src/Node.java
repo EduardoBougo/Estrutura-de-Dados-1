@@ -4,6 +4,7 @@ public class Node {
     private int timeLeft;
     private int execution_count;
     private Node next;
+    private int tempoTotal; // Guarda o tempo total necessário (não é alterado)
 
     /// Cria um nodo, com um dado elemento e o endereço do próximo nodo
     public Node(int element, Node next, int timeLeft) {
@@ -11,6 +12,7 @@ public class Node {
         this.timeLeft = timeLeft;
         this.next = next;
         execution_count = 0;
+        this.tempoTotal = timeLeft; // Salva o tempo original na criação
     }
 
     /// Retorna o elemento deste nodo
@@ -28,6 +30,9 @@ public class Node {
     public Node getNext() {
         return next;
     }
+
+    /// Retorna o tempo total original
+    public int getTempoTotal() { return tempoTotal; }
 
     /// ** Métodos modificadores: ** ///
 
