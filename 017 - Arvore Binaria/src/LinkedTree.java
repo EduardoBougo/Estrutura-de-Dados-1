@@ -96,7 +96,8 @@ public class LinkedTree<E> implements Tree<E> {
             throws IllegalArgumentException {
         TreePosition<E> vv = checkPosition(v);
         if (isExternal(v)) {
-            throw new IllegalArgumentException("External nodes have no children");
+            //throw new IllegalArgumentException("External nodes have no children");
+            return null;
         }
         return vv.getChildren();
     }
@@ -141,7 +142,7 @@ public class LinkedTree<E> implements Tree<E> {
     /**
      * Adds a root node to an empty tree
      */
-    public Position<E> addRoot(E e) throws IllegalArgumentException {
+    public TreePosition<E> addRoot(E e) throws IllegalArgumentException {
         if (!isEmpty()) {
             throw new IllegalArgumentException("Tree already has a root");
         }
@@ -189,10 +190,14 @@ public class LinkedTree<E> implements Tree<E> {
      */
     protected void preorderPositions(Position<E> v, PositionList<Position<E>> pos)
             throws IllegalArgumentException {
+        System.out.println(v.getElement());
         pos.addLast(v);
-        for (Position<E> w : children(v)) {
-            preorderPositions(w, pos);	// recurse on each child
+        if (children(v) != null) {
+            for (Position<E> w : children(v)) {
+                preorderPositions(w, pos);	// recurse on each child
+            }
         }
     }
+
 }
 //end#fragment LinkedTree5

@@ -15,7 +15,7 @@ public class BTNode<E> implements BTPosition<E> {
 //end#fragment BTNode
 
     /**
-     * Default constructor
+     * Default constructor'''''''''''''''''''''''''''''''''''''''''''''''''''
      */
     public BTNode() {
     }

@@ -397,6 +397,9 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
      */
     protected void preorderPositions(Position<E> v, PositionList<Position<E>> pos)
             throws IllegalStateException {
+        
+        System.out.println(v.getElement() + "(  ");
+        
         pos.addLast(v);
         if (hasLeft(v)) {
             preorderPositions(left(v), pos);	// recurse on left child
